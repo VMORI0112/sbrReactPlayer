@@ -1,22 +1,25 @@
-.App {
-  text-align: center;
+body {
+  background-color: grey;
 }
 
-.App-logo {
-  height: 40vmin;
+.player {
+  margin: auto;
+  width: 18rem;
+  background-color: white;
+  margin-bottom: 10px;
+}
+.listSongs {
+  width: 500px;
+  margin: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.looop:hover {
+  cursor: pointer;
+  color: blue;
 }
-
-.App-link {
-  color: #09d3ac;
+.btnPlay {
+  cursor: pointer;
+}
+.btnPlay:hover {
+  opacity: 0.6;
 }
