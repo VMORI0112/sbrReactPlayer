@@ -95,3 +95,18 @@ body {
       50%{ left : 40%;  }
       100%{ left : 90%; transform: rotateY(180deg) }
   }
+
+/* flintstones */
+.flintstones {
+  position:absolute;
+  bottom:10%;
+  left: 0;
+  animation:linear alternate infinite;
+  animation-name: runFlint;
+  animation-duration: 10s;
+  }     
+@keyframes runFlint {
+      0% { left: 0;}
+      50%{ left : 100%;}
+      100%{ left : 80%;}
+  }
