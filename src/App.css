@@ -73,3 +73,25 @@ body {
       50%{ left : 100%;}
       100%{ left : 100%;}
   }
+
+/* zelda */
+.zelda {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+}
+
+/* sonic */
+.sonic {
+  position:absolute;
+  bottom:10%;
+  left: 0px;
+  animation:linear alternate infinite;
+  animation-name: runSonic;
+  animation-duration: 2s;
+  }     
+@keyframes runSonic {
+      0% { left: 0;}
+      50%{ left : 40%;  }
+      100%{ left : 90%; transform: rotateY(180deg) }
+  }

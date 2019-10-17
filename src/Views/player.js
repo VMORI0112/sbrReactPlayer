@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import music from '../images/music.jpg';
 import vinyl from '../images/vinyl.png';
 import runMario from '../images/mario.gif';
+import zelda from '../images/zelda.gif';
+import sonic from '../images/sonic.gif';
 
 const Player = () => {
 
@@ -17,7 +19,9 @@ const Player = () => {
     const [loopBtn, setLoopBtn] = useState('col looop');
     const [stopLoopBtn, setStopLoopBtn] = useState('d-none');
     const [album, setAlbum] = useState("albumSpin");
-    const [marioGonnaRun, setMarioGonnaRun] = useState("mario");
+    const [marioGonnaRun, setMarioGonnaRun] = useState("d-none");
+    const [zeldaDiv, setZeldaDiv] = useState("d-none");
+    const [sonicDiv, setSonicDiv] = useState("d-none");
 
 
     async function fetchData() {
@@ -53,6 +57,8 @@ const Player = () => {
             setPauseBtn("col btnPlay");
             setAlbum("albumSpin rotate");
             if (myMusicName.includes("Mario")) {setMarioGonnaRun("mario run")};
+            if (myMusicName.includes("Zelda")) {setZeldaDiv("zelda")};
+            if (myMusicName.includes("Sonic")) {setSonicDiv("sonic")};
         } else {
             setMsg("Choose a music you IDIOT!");
             setTimeout(() => {
@@ -67,6 +73,8 @@ const Player = () => {
         setPauseBtn("d-none");
         setAlbum("albumSpin");
         setMarioGonnaRun("d-none");
+        setZeldaDiv("d-none");
+        setSonicDiv("d-none");
     }
     const loopAudio = () => {
         if (myMusic) {
@@ -194,7 +202,13 @@ const Player = () => {
         </div>
 
         <div className={marioGonnaRun}>
-            <img src={runMario} width="100px" height="100px" alt="witch" />
+            <img src={runMario} width="200px" alt="witch" />
+        </div>
+        <div className={zeldaDiv}>
+            <img src={zelda} width="400px" alt="witch" />
+        </div>
+        <div className={sonicDiv}>
+            <img src={sonic} width="200px" alt="witch" />
         </div>
         </>
     );
