@@ -68,10 +68,19 @@ const Player = () => {
         setStopLoopBtn("d-none");
     }
     const nextMusic = () => {
+        let leng = songs.length-1;
         let nexOne = IndexMyMusic+1;
-        setIndexMyMusic(nexOne);
-        let nexName = songs[nexOne].name;
-        let nexUrl = songs[nexOne].url;
+        var nexName;
+        var nexUrl;
+        if (IndexMyMusic === leng) {
+            nexName = songs[0].name;
+            nexUrl = songs[0].url;
+            setIndexMyMusic(0);
+        } else {
+            nexName = songs[nexOne].name;
+            nexUrl = songs[nexOne].url;
+            setIndexMyMusic(nexOne);
+        }
         let newSong = "https://assets.breatheco.de/apis/sound/"+nexUrl;
         myMusic.pause();
         myMusic.currentTime = 0;
@@ -79,8 +88,31 @@ const Player = () => {
         setPauseBtn("d-none");
         setMyMusicName(nexName);
         setMymusic('');
-        setMymusic(new Audio(newSong));
-        console.log(myMusic);        
+        setMymusic(new Audio(newSong)); 
+    }
+    const prevMusic = () => {
+        let leng = songs.length-1;
+        let prevOne = IndexMyMusic-1;
+        var nexName;
+        var nexUrl
+        if (IndexMyMusic === 0) {
+            setIndexMyMusic(leng);
+            nexName = songs[leng].name;
+            nexUrl = songs[leng].url;
+        } else {
+            setIndexMyMusic(prevOne);
+            nexName = songs[prevOne].name;
+            nexUrl = songs[prevOne].url;
+        }
+        let newSong = "https://assets.breatheco.de/apis/sound/"+nexUrl;
+        myMusic.pause();
+        myMusic.currentTime = 0;
+        setPlayBtn("col btnPlay");
+        setPauseBtn("d-none");
+        setMyMusicName(nexName);
+        setMymusic('');
+        setMymusic(new Audio(newSong)); 
+        console.log(leng);
     }
 
     return (
@@ -95,7 +127,7 @@ const Player = () => {
                         <span className="badge badge-pill badge-danger">{msg}</span>
                     </div>
                     <div className="row text-center">
-                        <div className="col">
+                        <div onClick={prevMusic} className="col">
                             <i className="fas fa-step-backward fa-2x"></i>
                         </div>
                         <div onClick={playMusicHandler} className={playBtn}>
