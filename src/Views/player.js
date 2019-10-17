@@ -19,6 +19,7 @@ const Player = () => {
     const [album, setAlbum] = useState("albumSpin");
     const [marioGonnaRun, setMarioGonnaRun] = useState("mario");
 
+
     async function fetchData() {
         const res = await fetch("https://assets.breatheco.de/apis/sound/songs");
         res.json()
@@ -28,16 +29,15 @@ const Player = () => {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    },[myMusic]);
     
 
     const switchMusic = (e) => {
+        if (myMusic) pauseMusicHandler();
         let mus = e.target.dataset.url;
         let ind = Number(e.target.dataset.index);
         let name = e.target.dataset.name;
         let url = "https://assets.breatheco.de/apis/sound/"+mus;
-        // let firstMusicToPlay = new Audio(url);
-        // firstMusicToPlay.play();
         setMymusic(new Audio(url));
         setMyMusicName(name);
         setIndexMyMusic(ind);
@@ -52,7 +52,7 @@ const Player = () => {
             setPlayBtn("d-none");
             setPauseBtn("col btnPlay");
             setAlbum("albumSpin rotate");
-            setMarioGonnaRun("mario run");
+            if (myMusicName.includes("Mario")) {setMarioGonnaRun("mario run")};
         } else {
             setMsg("Choose a music you IDIOT!");
             setTimeout(() => {
