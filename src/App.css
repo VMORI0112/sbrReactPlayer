@@ -1,5 +1,10 @@
 body {
-  background-color: grey;
+  background-color: #E75F2E;
+  background-image: url(./images/map.png);
+  background-position: center; 
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-size: 100% 100%;
 }
 
 .player {
@@ -9,8 +14,14 @@ body {
   margin-bottom: 10px;
 }
 .listSongs {
-  width: 500px;
+  width: 100%;
+  height: 600px;
   margin: auto;
+  overflow: scroll;
+  border-radius: 5px;
+}
+.listSongs li {
+  cursor: pointer;
 }
 
 .looop:hover {
@@ -23,3 +34,42 @@ body {
 .btnPlay:hover {
   opacity: 0.6;
 }
+.prev:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.next:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.albumSpin {
+  width: 300px;
+}
+.rotate {
+  animation: rotation 8s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* runnig mario */
+.run {
+  animation:linear alternate;
+  animation-name: run;
+  animation-duration: 10s;
+}
+.mario {
+  bottom:10%;
+  left: -90px;
+  position:absolute;
+  }     
+@keyframes run {
+      0% { left: 0;}
+      50%{ left : 100%;}
+      100%{ left : 100%;}
+  }
