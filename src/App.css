@@ -110,3 +110,18 @@ body {
       50%{ left : 100%;}
       100%{ left : 80%;}
   }
+
+/* power rangers */
+.power {
+  position:absolute;
+  bottom:10%;
+  left: 0;
+  animation:linear alternate infinite;
+  animation-name: runPower;
+  animation-duration: 10s;
+  }     
+@keyframes runPower {
+      0% { left: 0;}
+      50%{ left : 80%;}
+      100%{ left : 80%;}
+  }

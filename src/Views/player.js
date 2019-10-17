@@ -6,6 +6,7 @@ import runMario from '../images/mario.gif';
 import zelda from '../images/zelda.gif';
 import sonic from '../images/sonic.gif';
 import flintstones from '../images/flintstones.gif';
+import powerRangers from '../images/power.gif';
 
 const Player = () => {
 
@@ -24,6 +25,7 @@ const Player = () => {
     const [zeldaDiv, setZeldaDiv] = useState("d-none");
     const [sonicDiv, setSonicDiv] = useState("d-none");
     const [flintstonesDiv, setFlintstonesDiv] = useState("d-none");
+    const [powerRangersDiv, setPowerRangersDiv] = useState("d-none");
 
 
     async function fetchData() {
@@ -62,6 +64,7 @@ const Player = () => {
             if (myMusicName.includes("Zelda")) {setZeldaDiv("zelda")};
             if (myMusicName.includes("Sonic")) {setSonicDiv("sonic")};
             if (myMusicName.includes("Flintstones")) {setFlintstonesDiv("flintstones")};
+            if (myMusicName.includes("power")) {setPowerRangersDiv("power")};
         } else {
             setMsg("Choose a music you IDIOT!");
             setTimeout(() => {
@@ -79,6 +82,7 @@ const Player = () => {
         setZeldaDiv("d-none");
         setSonicDiv("d-none");
         setFlintstonesDiv("d-none");
+        setPowerRangersDiv("d-none");
     }
     const loopAudio = () => {
         if (myMusic) {
@@ -216,6 +220,9 @@ const Player = () => {
         </div>
         <div className={flintstonesDiv}>
             <img src={flintstones} width="200px" alt="flintstones" />
+        </div>
+        <div className={powerRangersDiv}>
+            <img src={powerRangers} width="300px" alt="power rangers" />
         </div>
         </>
     );
