@@ -7,6 +7,7 @@ const Player = () => {
     const [songs, setSongs] = useState(null);
     const [dataError, setDataError] = useState(null);
     const [myMusic, setMymusic] = useState(null);
+    const [IndexMyMusic, setIndexMyMusic] = useState();
     const [msg, setMsg] = useState('');
     const [myMusicName, setMyMusicName] = useState("Please choose a music");
     const [playBtn, setPlayBtn] = useState("col btnPlay");
@@ -28,11 +29,12 @@ const Player = () => {
 
     const switchMusic = (e) => {
         let mus = e.target.dataset.url;
+        let ind = Number(e.target.dataset.index);
         let name = e.target.dataset.name;
         let url = "https://assets.breatheco.de/apis/sound/"+mus;
         setMymusic(new Audio(url));
         setMyMusicName(name);
-        // console.log(myMusic);
+        setIndexMyMusic(ind);
     }
 
     const playMusicHandler = () => {
@@ -47,7 +49,6 @@ const Player = () => {
             },2000)
         }
     }
-
     const pauseMusicHandler = () => {
         myMusic.pause();
         myMusic.currentTime = 0;
@@ -65,6 +66,21 @@ const Player = () => {
         myMusic.loop = false;
         setLoopBtn("col looop");
         setStopLoopBtn("d-none");
+    }
+    const nextMusic = () => {
+        let nexOne = IndexMyMusic+1;
+        setIndexMyMusic(nexOne);
+        let nexName = songs[nexOne].name;
+        let nexUrl = songs[nexOne].url;
+        let newSong = "https://assets.breatheco.de/apis/sound/"+nexUrl;
+        myMusic.pause();
+        myMusic.currentTime = 0;
+        setPlayBtn("col btnPlay");
+        setPauseBtn("d-none");
+        setMyMusicName(nexName);
+        setMymusic('');
+        setMymusic(new Audio(newSong));
+        console.log(myMusic);        
     }
 
     return (
@@ -88,7 +104,7 @@ const Player = () => {
                         <div onClick={pauseMusicHandler} className={pauseBtn}>
                             <i className="fas fa-pause fa-2x"></i>
                         </div>
-                        <div className="col">
+                        <div onClick={nextMusic} className="col">
                             <i className="fas fa-step-forward fa-2x"></i>
                         </div>
                         <div onClick={loopAudio} className={loopBtn}>
@@ -110,8 +126,9 @@ const Player = () => {
                         onClick={switchMusic} 
                         data-url={item.url} 
                         data-name={item.name}
+                        data-index={index}
                     >
-                        {item.id} - {item.name}
+                        {index+1} - {item.name}
                     </li>
                 )
             })}</ul>
