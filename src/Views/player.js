@@ -7,6 +7,10 @@ import zelda from '../images/zelda.gif';
 import sonic from '../images/sonic.gif';
 import flintstones from '../images/flintstones.gif';
 import powerRangers from '../images/power.gif';
+import bart from '../images/bart.gif';
+import sp1 from '../images/sp1.gif';
+import sp2 from '../images/sp2.gif';
+import sp3 from '../images/sp3.gif';
 
 const Player = () => {
 
@@ -26,6 +30,8 @@ const Player = () => {
     const [sonicDiv, setSonicDiv] = useState("d-none");
     const [flintstonesDiv, setFlintstonesDiv] = useState("d-none");
     const [powerRangersDiv, setPowerRangersDiv] = useState("d-none");
+    const [bartDiv, setBartDiv] = useState("d-none");
+    const [southParkDiv, setSouthParkDiv] = useState("d-none");
 
 
     async function fetchData() {
@@ -65,6 +71,8 @@ const Player = () => {
             if (myMusicName.includes("Sonic")) {setSonicDiv("sonic")};
             if (myMusicName.includes("Flintstones")) {setFlintstonesDiv("flintstones")};
             if (myMusicName.includes("power")) {setPowerRangersDiv("power")};
+            if (myMusicName.includes("simpsons")) {setBartDiv("bart")};
+            if (myMusicName.includes("south")) {setSouthParkDiv("south")};
         } else {
             setMsg("Choose a music you IDIOT!");
             setTimeout(() => {
@@ -83,6 +91,8 @@ const Player = () => {
         setSonicDiv("d-none");
         setFlintstonesDiv("d-none");
         setPowerRangersDiv("d-none");
+        setBartDiv("d-none");
+        setSouthParkDiv("d-none");
     }
     const loopAudio = () => {
         if (myMusic) {
@@ -223,6 +233,14 @@ const Player = () => {
         </div>
         <div className={powerRangersDiv}>
             <img src={powerRangers} width="300px" alt="power rangers" />
+        </div>
+        <div className={bartDiv}>
+            <img src={bart} width="200px" alt="bart" />
+        </div>
+        <div className={southParkDiv}>
+            <img src={sp1} width="200px" alt="sp1" />
+            <img src={sp2} width="200px" alt="sp2" />
+            <img src={sp3} width="200px" alt="sp3" />
         </div>
         </>
     );
