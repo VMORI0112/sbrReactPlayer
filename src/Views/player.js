@@ -12,6 +12,7 @@ import sp1 from '../images/sp1.gif';
 import sp2 from '../images/sp2.gif';
 import sp3 from '../images/sp3.gif';
 import thundercats from '../images/thundercats.gif';
+import xmen from '../images/xmen.gif';
 
 const Player = () => {
 
@@ -34,6 +35,7 @@ const Player = () => {
     const [bartDiv, setBartDiv] = useState("d-none");
     const [southParkDiv, setSouthParkDiv] = useState("d-none");
     const [thundercatsDiv, setThundercatsDiv] = useState("d-none");
+    const [xmenDiv, setXmenDiv] = useState("d-none");
 
 
     async function fetchData() {
@@ -76,6 +78,7 @@ const Player = () => {
             if (myMusicName.includes("simpsons")) {setBartDiv("bart")};
             if (myMusicName.includes("south")) {setSouthParkDiv("south")};
             if (myMusicName.includes("thundercats")) {setThundercatsDiv("thundercats")};
+            if (myMusicName.includes("x-men")) {setXmenDiv("xmen")};
         } else {
             setMsg("Choose a music you IDIOT!");
             setTimeout(() => {
@@ -96,7 +99,8 @@ const Player = () => {
         setPowerRangersDiv("d-none");
         setBartDiv("d-none");
         setSouthParkDiv("d-none");
-        setThundercatsDiv("d-none")
+        setThundercatsDiv("d-none");
+        setXmenDiv("d-none");
     }
     const loopAudio = () => {
         if (myMusic) {
@@ -248,6 +252,9 @@ const Player = () => {
         </div>
         <div className={thundercatsDiv}>
             <img src={thundercats} width="200px" alt="thundercats" />
+        </div>
+        <div className={xmenDiv}>
+            <img src={xmen} width="400px" alt="xmen" />
         </div>
         </>
     );
