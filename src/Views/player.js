@@ -163,6 +163,16 @@ const Player = () => {
         setMymusic(new Audio(newSong)); 
         console.log(leng);
     }
+    const VolumeUp = () => {
+        if (myMusic.volume < 0.99999999999) { 
+            myMusic.volume = myMusic.volume + 0.1
+         } else { myMusic.volume = 1 };
+    }
+    const VolumeDown = () => {
+        if (myMusic.volume > 0.1) { 
+            myMusic.volume = myMusic.volume - 0.1
+         } else myMusic.volume = 0;
+    }
 
     return (
         <>
@@ -199,12 +209,12 @@ const Player = () => {
                             <hr/>
                             <div className="row">
                                 <div onClick={loopAudio} className={loopBtn}>
-                                     <span class="badge badge-info">
+                                     <span className="badge badge-info">
                                        Repeat <i className="fas fa-sync"></i>
                                      </span>
                                 </div>
                                 <div onClick={stopLoopAudio} className={stopLoopBtn}>
-                                    <span class="badge badge-danger">
+                                    <span className="badge badge-danger">
                                        Stop Repeat <i className="fas fa-ban"></i>
                                      </span>
                                     
@@ -212,9 +222,9 @@ const Player = () => {
                                 <div className="col">
                                     Volume 
                                     &nbsp;
-                                    <span class="badge badge-primary">-</span> 
+                                    <span onClick={VolumeDown} className="badge badge-primary">-</span> 
                                     &nbsp;
-                                    <span class="badge badge-primary">+</span>
+                                    <span onClick={VolumeUp} className="badge badge-primary">+</span>
                                 </div>
                             </div>
                         </div>
