@@ -195,11 +195,26 @@ const Player = () => {
                                 <div onClick={nextMusic} className="col next">
                                     <i className="fas fa-step-forward fa-2x"></i>
                                 </div>
+                            </div>
+                            <hr/>
+                            <div className="row">
                                 <div onClick={loopAudio} className={loopBtn}>
-                                    <i className="fas fa-sync"></i>
+                                     <span class="badge badge-info">
+                                       Repeat <i className="fas fa-sync"></i>
+                                     </span>
                                 </div>
                                 <div onClick={stopLoopAudio} className={stopLoopBtn}>
-                                    <i className="fas fa-ban"></i>
+                                    <span class="badge badge-danger">
+                                       Stop Repeat <i className="fas fa-ban"></i>
+                                     </span>
+                                    
+                                </div>
+                                <div className="col">
+                                    Volume 
+                                    &nbsp;
+                                    <span class="badge badge-primary">-</span> 
+                                    &nbsp;
+                                    <span class="badge badge-primary">+</span>
                                 </div>
                             </div>
                         </div>
