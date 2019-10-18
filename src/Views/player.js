@@ -37,19 +37,15 @@ const Player = () => {
     const [thundercatsDiv, setThundercatsDiv] = useState("d-none");
     const [xmenDiv, setXmenDiv] = useState("d-none");
 
-
     async function fetchData() {
         const res = await fetch("https://assets.breatheco.de/apis/sound/songs");
         res.json()
         .then(res => setSongs(res))
         .catch(err => setDataError(err))
     }
-
     useEffect(() => {
         fetchData();
     },[myMusic]);
-    
-
     const switchMusic = (e) => {
         if (myMusic) pauseMusicHandler();
         let mus = e.target.dataset.url;
@@ -60,10 +56,6 @@ const Player = () => {
         setMyMusicName(name);
         setIndexMyMusic(ind);
     }
-
-    console.log(myMusic);
-    
-
     const playMusicHandler = () => {
         if (myMusic) {
             myMusic.play();
@@ -85,6 +77,10 @@ const Player = () => {
                 setMsg('');
             },2000)
         }
+        myMusic.onended = function(){
+            myMusic.remove();
+            nextMusic();
+          };
     }
     const pauseMusicHandler = () => {
         myMusic.pause();
@@ -241,7 +237,7 @@ const Player = () => {
                         return (
                                 <li 
                                     key={index} 
-                                    className="list-group-item list-group-item-action" 
+                                    className="list-group-item list-group-item-action notWorking" 
                                     onClick={switchMusic} 
                                     data-url={item.url} 
                                     data-name={item.name}
