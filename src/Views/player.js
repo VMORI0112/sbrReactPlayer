@@ -92,6 +92,9 @@ const Player = () => {
         setPlayBtn("col btnPlay");
         setPauseBtn("d-none");
         setAlbum("albumSpin");
+        stopCartoon();
+    }
+    const stopCartoon = () => {
         setMarioGonnaRun("d-none");
         setZeldaDiv("d-none");
         setSonicDiv("d-none");
@@ -137,6 +140,7 @@ const Player = () => {
         setMyMusicName(nexName);
         setMymusic('');
         setMymusic(new Audio(newSong)); 
+        stopCartoon();
     }
     const prevMusic = () => {
         let leng = songs.length-1;
@@ -162,6 +166,7 @@ const Player = () => {
         setMymusic('');
         setMymusic(new Audio(newSong)); 
         console.log(leng);
+        stopCartoon();
     }
     const VolumeUp = () => {
         if (myMusic.volume < 0.99999999999) { 
@@ -222,9 +227,9 @@ const Player = () => {
                                 <div className="col">
                                     Volume 
                                     &nbsp;
-                                    <span onClick={VolumeDown} className="badge badge-primary">-</span> 
+                                    <span onClick={VolumeDown} className="badge badge-primary volume">-</span> 
                                     &nbsp;
-                                    <span onClick={VolumeUp} className="badge badge-primary">+</span>
+                                    <span onClick={VolumeUp} className="badge badge-primary volume">+</span>
                                 </div>
                             </div>
                         </div>
